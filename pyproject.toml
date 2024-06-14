@@ -68,13 +68,9 @@ asyncio_mode = "auto"
 
 # COVERAGE:
 [tool.coverage.run]
-source_pkgs = ["aiorem", "tests"]
+source_pkgs = ["aiorem"]
 branch = true
 parallel = true
-
-[tool.coverage.paths]
-aiorem = ["src/aiorem", "*/aiorem/src/aiorem"]
-tests = ["tests", "*/aiorem/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
