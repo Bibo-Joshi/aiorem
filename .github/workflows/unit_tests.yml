@@ -35,7 +35,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          pytest -v --cov --junit-xml=.test_report.xml
+          coverage run -m pytest -v --junit-xml=.test_report.xml
 
       - name: Test Summary
         id: test_summary

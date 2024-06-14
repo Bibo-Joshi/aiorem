@@ -30,7 +30,7 @@ Issues = "https://github.com/Hinrich Mahler/aiorem/issues"
 Source = "https://github.com/Hinrich Mahler/aiorem"
 
 [tool.hatch.version]
-path = "src/aiorem/__about__.py"
+path = "aiorem/__about__.py"
 
 # BLACK:
 [tool.black]
