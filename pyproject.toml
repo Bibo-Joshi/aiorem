@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aiorem"
+dynamic = ["version"]
+description = 'asyncio Context Manager with Explicit Interface'
+readme = "README.rst"
+requires-python = ">=3.11"
+license = "MIT"
+keywords = ["asyncio", "resources", "contextmanager"]
+authors = [
+  { name = "Hinrich Mahler", email = "aiorem@mahlerhome.de" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/Hinrich Mahler/aiorem#readme"
+Issues = "https://github.com/Hinrich Mahler/aiorem/issues"
+Source = "https://github.com/Hinrich Mahler/aiorem"
+
+[tool.hatch.version]
+path = "src/aiorem/__about__.py"
+
+# BLACK:
+[tool.black]
+line-length = 99
+
+# RUFF:
+[tool.ruff]
+line-length = 99
+show-fixes = true
+
+[tool.ruff.lint]
+preview = true
+explicit-preview-rules = true
+select = ["E", "F", "I", "PL", "UP", "RUF", "PTH", "C4", "B", "PIE", "SIM", "RET", "RSE",
+          "G", "ISC", "PT", "ASYNC", "TCH", "SLOT", "PERF", "PYI", "FLY", "AIR", "RUF022",
+          "RUF023", "Q", "INP", "W", "YTT", "DTZ", "ARG"]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/**.py" = ["INP001"]
+
+# MYPY:
+[tool.mypy]
+warn_unused_ignores = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+show_error_codes = true
+python_version = "3.11"
+
+# PYTEST:
+[tool.pytest.ini_options]
+pythonpath= ["src", "tests"]
+asyncio_mode = "auto"
+
+# COVERAGE:
+[tool.coverage.run]
+source_pkgs = ["aiorem", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.paths]
+aiorem = ["src/aiorem", "*/aiorem/src/aiorem"]
+tests = ["tests", "*/aiorem/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "@overload",
+  "@abstractmethod",
+  "if TYPE_CHECKING:"
+]

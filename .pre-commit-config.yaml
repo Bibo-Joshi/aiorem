@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 'v0.4.8'
+    hooks:
+      - id: ruff
+        name: ruff
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.4.2
+    hooks:
+      - id: black
+        args:
+          - --diff
+          - --check
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        name: mypy
+        files: ^(?!(tests)).*\.py$
+        args:
+          - --install-types
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.16.0
+    hooks:
+      - id: pyupgrade
+        args:
+          - --py311-plus
