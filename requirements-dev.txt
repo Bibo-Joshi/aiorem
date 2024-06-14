@@ -2,11 +2,8 @@ pre-commit
 coverage~=7.5
 black~=24.4
 build
-furo~=2024.5
 mypy~=1.10
 pytest~=8.2
 pytest-asyncio~=0.23
 ruff~=0.4
-sphinx~=7.3
-sphinx-copybutton~=0.5
-
+-r docs/requirements-docs.txt
