@@ -25,10 +25,7 @@ extensions = [
     "sphinx.ext.napoleon",
 ]
 
-templates_path = ["_templates"]
-
 html_theme = "furo"
-html_static_path = ["_static"]
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
