@@ -40,6 +40,7 @@ jobs:
           git checkout ${{ github.base_ref }}
           pip install . -U
           pyright --verifytypes telegram --ignoreexternal --outputjson > base.json || true
+          pyright --verifytypes telegram --ignoreexternal > base.readable || true
 
       - name: Compare Completeness
         uses: jannekem/run-python-script-action@v1
@@ -60,6 +61,9 @@ jobs:
             if base == 0:
                 text = f"Something is broken in the workflow. Reported type completeness is 0. 💥"
                 set_summary(text)
+                print("pyright report for base branch:")
+                print(Path("base.readable").read_text(encoding="utf-8"))
+                print("\n\npyright report for PR branch:")
                 print(Path("pr.readable").read_text(encoding="utf-8"))
                 error(text)
                 exit(1)

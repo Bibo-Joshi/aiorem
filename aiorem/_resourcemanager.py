@@ -8,7 +8,9 @@ from typing import Self
 
 
 class AbstractResourceManager(
-    contextlib.AbstractAsyncContextManager, contextlib.AsyncContextDecorator, abc.ABC
+    contextlib.AbstractAsyncContextManager["AbstractResourceManager"],
+    contextlib.AsyncContextDecorator,
+    abc.ABC,
 ):
     """
     Abstract base class for asynchronous resource managers.
