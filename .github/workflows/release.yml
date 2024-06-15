@@ -32,7 +32,7 @@ jobs:
       - build
     runs-on: ubuntu-latest
     environment:
-      name: pypi
+      name: release_pypi
       url: https://pypi.org/p/aiorem
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: testpypi
+      name: release_test_pypi
       url: https://test.pypi.org/p/aiorem
 
     permissions:
