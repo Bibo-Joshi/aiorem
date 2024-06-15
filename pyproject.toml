@@ -29,8 +29,12 @@ Documentation = "https://github.com/Hinrich Mahler/aiorem#readme"
 Issues = "https://github.com/Hinrich Mahler/aiorem/issues"
 Source = "https://github.com/Hinrich Mahler/aiorem"
 
+# HATCH:
 [tool.hatch.version]
 path = "aiorem/__about__.py"
+
+[tool.hatch.build]
+packages = ["aiorem"]
 
 # BLACK:
 [tool.black]
