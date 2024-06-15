@@ -7,7 +7,7 @@ on:
       - .github/workflows/type_completeness_test.yml
   push:
     branches:
-      - master
+      - main
 
 jobs:
   test-type-completeness:
@@ -39,8 +39,8 @@ jobs:
         run: |
           git checkout ${{ github.base_ref }}
           pip install . -U
-          pyright --verifytypes telegram --ignoreexternal --outputjson > base.json || true
-          pyright --verifytypes telegram --ignoreexternal > base.readable || true
+          pyright --verifytypes aiorem --ignoreexternal --outputjson > base.json || true
+          pyright --verifytypes aiorem --ignoreexternal > base.readable || true
 
       - name: Compare Completeness
         uses: jannekem/run-python-script-action@v1
