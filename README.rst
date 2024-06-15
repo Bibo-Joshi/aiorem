@@ -9,8 +9,8 @@
    :target: https://pypi.org/project/aiorem/
    :alt: Supported Python versions
 
-.. image:: https://readthedocs.org/projects/aiorem/badge/?version=latest
-   :target: https://aiorem.readthedocs.io/latest/
+.. image:: https://readthedocs.org/projects/aiorem/badge/?version=stable
+   :target: https://aiorem.readthedocs.io/
    :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/l/aiorem.svg
@@ -97,4 +97,4 @@ Here is a simple example of how to use ``aiorem``:
         asyncio.run(main())
 
 
-For more information on how to use ``aiorem``, please refer to the `documentation <https://aiorem.readthedocs.io/en/stable/>`_.
+For more information on how to use ``aiorem``, please refer to the `documentation <https://aiorem.readthedocs.io/>`_.
