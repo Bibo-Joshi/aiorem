@@ -50,6 +50,29 @@ You can install or upgrade ``aiorem`` via
 
     $ pip install aiorem --upgrade
 
+Motivation
+----------
+
+When working with ``asyncio`` Python libraries, async context managers are a common pattern for managing resources and snippets like
+
+.. code:: python
+
+    async with some_lib.Client() as client:
+        ...
+
+are often seen in the quickstart.
+However, there are two use cases, where this pattern is hard to use and an explicit interface for acquiring and releasing resources is desirable.
+
+1. Nested context managers: When writing a class that manages several resources, acquiring and releasing these resources should each usually be bundled in a single method.
+2. Low level event loop usage: In some advanced cases, it can be desirable to use things like ``loop.run_until_complete`` than ``await``-ing a coroutine.
+
+For both cases, one can then either explicitly call ``Client.__aenter__`` and ``Client.__aexit__`` or duplicate whatever logic is used within these methods.
+Unfortunately, the behavior of ``Client.__aenter__`` and ``Client.__aexit__`` is not always well documented.
+Moreover, using magic/dunder might be viewed as bad practice, as they are mostly intended to be used by the Python interpreter.
+
+This shortcoming is what ``aiorem`` aims to improve.
+As the Quick Start below shows, subclasses of ``aiorem.AbstractResourceManager`` can be used in different ways according to the needs of the use case while the behavior is well documented and explicit.
+For the case of nested context managers, ``aiorem`` provides the `AbstractResourceManagerCollection <https://aiorem.readthedocs.io/stable/aiorem.html#aiorem.AbstractResourceManagerCollection>`_ class as a natural extension of `AbstractResourceManager <https://aiorem.readthedocs.io/stable/aiorem.html#aiorem.AbstractResourceManager>`_.
 
 Quick Start
 -----------
