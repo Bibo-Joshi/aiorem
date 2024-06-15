@@ -9,28 +9,24 @@
    :target: https://pypi.org/project/aiorem/
    :alt: Supported Python versions
 
-.. image:: https://readthedocs.org/projects/aiorem/badge/?version=stable
-   :target: https://aiorem.readthedocs.io/en/stable/
+.. image:: https://readthedocs.org/projects/aiorem/badge/?version=latest
+   :target: https://aiorem.readthedocs.io/latest/
    :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/l/aiorem.svg
    :target: https://mit-license.org/
    :alt: MIT License
 
-.. image:: https://github.com/Bibo-Joshi/aiorem/actions/workflows/unit_tests.yml/badge.svg?branch=master
+.. image:: https://github.com/Bibo-Joshi/aiorem/actions/workflows/unit_tests.yml/badge.svg?branch=main
    :target: https://github.com/Bibo-Joshi/aiorem/
    :alt: Github Actions workflow
 
-.. image:: https://codecov.io/gh/Bibo-Joshi/aiorem/branch/master/graph/badge.svg
-   :target: https://app.codecov.io/gh/Bibo-Joshi/aiorem
+.. image:: https://codecov.io/gh/Bibo-Joshi/aiorem/graph/badge.svg?token=H1HUA2FDR3
+ :target: https://codecov.io/gh/Bibo-Joshi/aiorem
    :alt: Code coverage
 
-.. image:: https://isitmaintained.com/badge/resolution/Bibo-Joshi/aiorem.svg
-   :target: https://isitmaintained.com/project/Bibo-Joshi/aiorem
-   :alt: Median time to resolve an issue
-
-.. image:: https://results.pre-commit.ci/badge/github/Bibo-Joshi/aiorem/master.svg
-   :target: https://results.pre-commit.ci/latest/github/Bibo-Joshi/aiorem/master
+.. image:: https://results.pre-commit.ci/badge/github/Bibo-Joshi/aiorem/main.svg
+   :target: https://results.pre-commit.ci/latest/github/Bibo-Joshi/aiorem/main
    :alt: pre-commit.ci status
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
