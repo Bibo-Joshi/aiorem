@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - aiorem/**
-      - docs/**
+      - '**.rst'
   push:
     branches:
       - main
