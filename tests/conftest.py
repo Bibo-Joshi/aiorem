@@ -41,16 +41,16 @@ class SimpleResourceManagerCollection(AbstractResourceManagerCollection):
         return self.resources
 
 
-@pytest.fixture()
+@pytest.fixture
 def resource_manager():
     return SimpleResourceManager()
 
 
-@pytest.fixture()
+@pytest.fixture
 def resource_manager_with_on_error():
     return SimpleResourceManagerWithOnError()
 
 
-@pytest.fixture()
+@pytest.fixture
 def resource_manager_collection():
     return SimpleResourceManagerCollection([SimpleResourceManagerWithOnError() for _ in range(3)])
