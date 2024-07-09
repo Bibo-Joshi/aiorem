@@ -14,74 +14,7 @@ jobs:
     name:   test-type-completeness
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      # https://github.com/actions/checkout/issues/329#issuecomment-674881489
-      - run: git fetch --depth=1
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: Bibo-Joshi/pyright-type-completeness@1.0.0
         with:
+          package-name: aiorem
           python-version: 3.11
-      - name: Install Pyright
-        run: |
-          python -W ignore -m pip install pyright
-
-      - name: Get PR Completeness
-        # Must run before base completeness, as base completeness will check out the base branch
-        # and we can't go back to the PR branch after that in case the PR is coming from a fork
-        run: |
-          pip install . -U
-          pyright --verifytypes aiorem --ignoreexternal --outputjson > pr.json || true
-          pyright --verifytypes aiorem --ignoreexternal > pr.readable || true
-
-      - name: Get Base Completeness
-        run: |
-          git checkout ${{ github.base_ref }}
-          pip install . -U
-          pyright --verifytypes aiorem --ignoreexternal --outputjson > base.json || true
-          pyright --verifytypes aiorem --ignoreexternal > base.readable || true
-
-      - name: Compare Completeness
-        uses: jannekem/run-python-script-action@v1
-        with:
-          script: |
-            import json
-            import os
-            from pathlib import Path
-
-            base = float(
-              json.load(open("base.json", "rb"))["typeCompleteness"]["completenessScore"]
-            )
-            pr = float(
-              json.load(open("pr.json", "rb"))["typeCompleteness"]["completenessScore"]
-            )
-            base_text = f"This PR changes type completeness from {round(base, 3)} to {round(pr, 3)}."
-            
-            if base == 0:
-                text = f"Something is broken in the workflow. Reported type completeness is 0. 💥"
-                set_summary(text)
-                print("pyright report for base branch:")
-                print(Path("base.readable").read_text(encoding="utf-8"))
-                print("\n\npyright report for PR branch:")
-                print(Path("pr.readable").read_text(encoding="utf-8"))
-                error(text)
-                exit(1)
-            
-            if pr < base:
-                text = f"{base_text} ❌"
-                set_summary(text)
-                print(Path("pr.readable").read_text(encoding="utf-8"))
-                error(text)
-                exit(1)
-            elif pr > base:
-                text = f"{base_text} ✨"
-                set_summary(text)
-                if pr < 1:
-                    print(Path("pr.readable").read_text(encoding="utf-8"))
-                print(text)
-            else:
-                text = f"{base_text} ✅"
-                set_summary(text)
-                print(Path("pr.readable").read_text(encoding="utf-8"))
-                print(text)
