@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.5.4'
+    rev: 'v0.5.5'
     hooks:
       - id: ruff
         name: ruff
@@ -20,7 +20,7 @@ repos:
         args:
           - --install-types
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.16.0
+    rev: v3.17.0
     hooks:
       - id: pyupgrade
         args:
