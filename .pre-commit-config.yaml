@@ -1,6 +1,10 @@
+ci:
+    autoupdate_schedule: quarterly
+    autoupdate_commit_msg: 'Bump `pre-commit` Hooks to Latest Versions'
+
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.6.2'
+    rev: 'v0.6.3'
     hooks:
       - id: ruff
         name: ruff
